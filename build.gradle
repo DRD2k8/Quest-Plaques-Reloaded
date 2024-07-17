@@ -131,14 +131,14 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    // flatDir {
-    //     dir 'libs'
-    // }
+    repositories {
+        maven {
+            url "https://cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
+    }
 }
 
 dependencies {
@@ -148,6 +148,16 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // The required mods
+    implementation fg.deobf("curse.maven:advancement-plaques-499826:4930510")
+    implementation fg.deobf("curse.maven:iceberg-520110:5138899")
+
+    // The quest mods (And libraries)
+    implementation fg.deobf("curse.maven:ftb-quests-forge-289412:5513826")
+    implementation fg.deobf("curse.maven:ftb-teams-forge-404468:5267190")
+    implementation fg.deobf("curse.maven:ftb-library-forge-404465:5364190")
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
