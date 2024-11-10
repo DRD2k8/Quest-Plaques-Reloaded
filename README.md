@@ -6,4 +6,4 @@ Do you guys miss Quest Plaques and are tired of waiting for more versions? Well,
 ## Supported Quest Mods
 * FTB Quests
 
-This mod currently only supports Forge 1.20.1.
+This branch is being moved to an architectury branch
